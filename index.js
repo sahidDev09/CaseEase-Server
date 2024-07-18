@@ -138,6 +138,11 @@ async function connectDB() {
     res.json(user);
   });
 
+  app.get("/users", async (req, res) => {
+    const result = await allusers.find().toArray();
+    res.json(result);
+  });
+
   try {
     await client.connect();
     console.log("Successfully connected to MongoDB!");
